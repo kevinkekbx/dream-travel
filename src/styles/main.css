@@ -9,3 +9,24 @@ body,
 html.dark {
   background: #121212;
 }
+
+@font-face {
+  font-family: 'Porsche Next';
+  font-style: normal;
+  font-weight: 200;
+  src: url(../assets/fonts/PorscheNext-Thin.otf);
+}
+
+@font-face {
+  font-family: 'Porsche Next';
+  font-style: normal;
+  font-weight: 400;
+  src: url(../assets/fonts/PorscheNext-Regular.otf);
+}
+
+@font-face {
+  font-family: 'Porsche Next';
+  font-style: normal;
+  font-weight: 600;
+  src: url(../assets/fonts/PorscheNext-Bold.otf);
+}
