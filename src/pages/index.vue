@@ -11,7 +11,7 @@ const step = ref(2)
     <div py-8>
       <img w-full src="../assets/images/911_Carrera.png" alt="911_Carrera">
     </div>
-    <h3 text-center text-2xl font-600>
+    <h3 text-primary text-center text-2xl font-600>
       Taycan 4 Cross Turismo
     </h3>
     <p mt-20 text="center #B65B5B" font-sans>
@@ -19,7 +19,7 @@ const step = ref(2)
       <br>
       在开始之前就先阅读 <span font-600>PYD细则</span>
     </p>
-    <div mb-30 mt-10 flex justify-center>
+    <div mb-30 mt-10 w-full px-5>
       <Timeline v-model:step="step" :data="['梦想简介', '梦想基金', '梦想实习生', '梦想终章']" />
     </div>
     <div px-5>
