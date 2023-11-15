@@ -19,7 +19,7 @@ const step = ref(2)
       <br>
       在开始之前就先阅读 <span font-600>PYD细则</span>
     </p>
-    <div mb-30 mt-10 w-full px-5>
+    <div mb-30 mt-10 w-full flex justify-center px-5>
       <Timeline v-model:step="step" :data="['梦想简介', '梦想基金', '梦想实习生', '梦想终章']" />
     </div>
     <div px-5>
