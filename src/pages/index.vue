@@ -3,44 +3,35 @@ defineOptions({
   name: 'IndexPage',
 })
 
-const name = ref('')
-
-const router = useRouter()
-function go() {
-  if (name.value)
-    router.push(`/hi/${encodeURIComponent(name.value)}`)
-}
+const step = ref(2)
 </script>
 
 <template>
-  <div>
-    <div i-carbon-campsite inline-block text-4xl />
-    <p>
-      <a rel="noreferrer" href="https://github.com/antfu/vitesse-lite" target="_blank">
-        Vitesse Lite
-      </a>
+  <div class="page h-screen w-screen">
+    <div py-8>
+      <img w-full src="../assets/images/911_Carrera.png" alt="911_Carrera">
+    </div>
+    <h3 text-center text-2xl font-600>
+      Taycan 4 Cross Turismo
+    </h3>
+    <p mt-20 text="center #B65B5B" font-sans>
+      你的梦想之旅马上就要开启了
+      <br>
+      在开始之前就先阅读 <span font-600>PYD细则</span>
     </p>
-    <p>
-      <em text-sm op75>Opinionated Vite Starter Template</em>
-    </p>
-
-    <div py-4 />
-
-    <TheInput
-      v-model="name"
-      placeholder="What's your name?"
-      autocomplete="false"
-      @keydown.enter="go"
-    />
-
-    <div>
-      <button
-        class="m-3 text-sm btn"
-        :disabled="!name"
-        @click="go"
-      >
-        Go
+    <div mb-30 mt-10 flex justify-center>
+      <Timeline v-model:step="step" :data="['梦想简介', '梦想基金', '梦想实习生', '梦想终章']" />
+    </div>
+    <div px-5>
+      <button text="white center" bg-primary h-12 w-full rd-md lh-12>
+        立即开始
       </button>
     </div>
   </div>
 </template>
+
+<style scoped>
+.page{
+  background: linear-gradient(180deg, rgba(255, 193, 198, 0.30) 0%, rgba(255, 255, 255, 0.00) 100%), var(--text-text-inverse, #FFF);
+}
+</style>
