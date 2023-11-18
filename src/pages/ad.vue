@@ -1,5 +1,15 @@
 <script lang='ts' setup>
+const vRef = ref<HTMLVideoElement>()
 
+onMounted(() => {
+  const handleScroll = () => {
+    if (vRef.value && vRef.value.paused)
+      vRef.value.play()
+  }
+
+  // 引导用户交互，自动播放视频
+  useEventListener(document, 'click', handleScroll)
+})
 </script>
 
 <template>
@@ -8,8 +18,12 @@
     <!-- video bg -->
     <div relative>
       <video
+        ref="vRef"
         controls="false" src="../assets/videos/video2.mp4"
         loop autoplay muted h-screen
+        webkit-playsinline="true"
+        playsinline="true"
+        x5-video-player-type="h5-page"
       />
       <!-- mask -->
       <div absolute bottom-0 left-0 right-0 top-0 h-full w-full bg-black:70>
