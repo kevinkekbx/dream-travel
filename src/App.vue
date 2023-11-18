@@ -1,5 +1,5 @@
 <script setup lang="ts">
-autoSwitchDark()
+// autoSwitchDark()
 </script>
 
 <template>
