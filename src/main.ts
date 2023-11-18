@@ -1,6 +1,5 @@
 import { createApp } from 'vue'
 import { createRouter, createWebHistory } from 'vue-router/auto'
-import { Swiper, SwiperSlide } from 'swiper/vue'
 import App from './App.vue'
 
 import 'swiper/css'
@@ -13,6 +12,4 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
 })
 app.use(router)
-app.use(Swiper)
-app.use(SwiperSlide)
 app.mount('#app')
