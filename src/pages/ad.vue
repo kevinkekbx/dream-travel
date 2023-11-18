@@ -4,7 +4,7 @@
 
 <template>
   <div>
-    <HeaderMenu />
+    <!-- <HeaderMenu :blur="false" /> -->
     <!-- video bg -->
     <div relative>
       <video
@@ -27,7 +27,8 @@
             <div i-ic-round-keyboard-double-arrow-down animate-bounce />
           </div>
         </div>
-        <div mt-12 fccc gap-2 font-porsche>
+        <!-- title -->
+        <div mt-14 fccc gap-2 font-porsche>
           <div i-porsche-logo h-2 w-28 />
           <span tracking-6px>
             YOUNG
@@ -37,7 +38,8 @@
         </div>
       </div>
     </div>
-    <div pb-11 pt-15 bg="#eeeff2">
+    <div pb-12 pt-20 bg="#eeeff2">
+      <!-- 车辆滑块 -->
       <SwiperCar />
       <div mt-15 px-15 font-porsche text-primary>
         <div fccc gap-2>
@@ -49,15 +51,21 @@
         <div mt-5 op-50>
           介绍young dream计划的文案介绍young dream计划的文案介绍young dream计划的文案介绍young dream计划的文案介绍young dream计划的文案介绍young dream计划的文案介绍young dream计划的文案介绍young dream计划的文案介绍young dream计划的文案介绍yo
         </div>
-        <button b="~ primary" mt-18 h-48px w-full fcc rd-md>
+        <div ring="1 primary" mt-18 h-48px w-full fcc select-none rd-md bg-transparent trans active:scale-95 important-duration-150>
           报名开启梦想
-        </button>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
+.ad-text {
+  background: linear-gradient(180deg, rgba(238, 239, 242, 0.00) 0%, #EEEFF2 100%);
+}
+video{
+  object-fit: fill;
+}
 //全屏按钮
 video::-webkit-media-controls-fullscreen-button {
     display: none;
