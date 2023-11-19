@@ -10,6 +10,11 @@ onMounted(() => {
   // 引导用户交互，自动播放视频
   useEventListener(document, 'click', handleScroll)
 })
+
+const formVisible = ref(false)
+function showForm() {
+  formVisible.value = true
+}
 </script>
 
 <template>
@@ -65,11 +70,25 @@ onMounted(() => {
         <div mt-5 op-50>
           介绍young dream计划的文案介绍young dream计划的文案介绍young dream计划的文案介绍young dream计划的文案介绍young dream计划的文案介绍young dream计划的文案介绍young dream计划的文案介绍young dream计划的文案介绍young dream计划的文案介绍yo
         </div>
-        <div ring="1 primary" mt-18 h-48px w-full fcc select-none rd-md bg-transparent trans active:scale-95 important-duration-150>
+        <!-- 报名 Submit -->
+        <div
+          ring="1 primary" mt-18 h-48px w-full fcc select-none rd-md bg-transparent trans active:scale-95 important-duration-100
+          @click="showForm"
+        >
           报名开启梦想
         </div>
       </div>
     </div>
+
+    <van-popup
+      v-model:show="formVisible"
+      round
+      closeable
+      position="bottom"
+      :style="{ height: '90%' }"
+    >
+      <TheForm />
+    </van-popup>
   </div>
 </template>
 
