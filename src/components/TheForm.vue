@@ -4,9 +4,14 @@ const type = ref('')
 const email = ref('')
 const phone = ref('')
 const message = ref('')
+
+const router = useRouter()
+
 function onSubmit(values: any) {
   // eslint-disable-next-line no-console
   console.log('submit', values)
+
+  router.push('/result')
 }
 
 const selectIndex = ref(0)
