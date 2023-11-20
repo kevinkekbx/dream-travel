@@ -27,13 +27,6 @@ export default defineConfig({
           ),
         },
       },
-      webFonts: {
-        fonts: {
-          sans: 'DM Sans',
-          serif: 'DM Serif Display',
-          mono: 'DM Mono',
-        },
-      },
     }),
   ],
 })

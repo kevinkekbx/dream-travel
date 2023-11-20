@@ -11,6 +11,7 @@ declare module 'vue' {
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     SwiperCar: typeof import('./src/components/SwiperCar.vue')['default']
+    TheButton: typeof import('./src/components/TheButton.vue')['default']
     TheCounter: typeof import('./src/components/TheCounter.vue')['default']
     TheFooter: typeof import('./src/components/TheFooter.vue')['default']
     TheForm: typeof import('./src/components/TheForm.vue')['default']

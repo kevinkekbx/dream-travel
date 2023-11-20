@@ -1,37 +1,136 @@
-<script setup lang="ts" generic="T extends any, O extends any">
-defineOptions({
-  name: 'IndexPage',
+<script lang='ts' setup>
+const vRef = ref<HTMLVideoElement>()
+
+onMounted(() => {
+  const handleScroll = () => {
+    if (vRef.value && vRef.value.paused)
+      vRef.value.play()
+  }
+
+  // 引导用户交互，自动播放视频
+  useEventListener(document, 'click', handleScroll)
 })
 
-const step = ref(2)
+const formVisible = ref(false)
+function showForm() {
+  formVisible.value = true
+}
 </script>
 
 <template>
-  <div class="page h-screen w-screen">
-    <div py-8>
-      <img w-full src="../assets/images/911_Carrera.png" alt="911_Carrera">
+  <div>
+    <!-- <HeaderMenu :blur="false" /> -->
+    <!-- video bg -->
+    <div relative>
+      <video
+        ref="vRef"
+        controls="false" src="../assets/videos/video2.mp4"
+        loop autoplay muted h-screen
+        webkit-playsinline="true"
+        playsinline="true"
+        x5-video-player-type="h5-page"
+      />
+      <!-- mask -->
+      <div absolute bottom-0 left-0 right-0 top-0 h-full w-full bg-black:70>
+        <div px-14 pt-43>
+          <h3 text-2xl font-porsche>
+            这是标题这是标题这是标题
+          </h3>
+          <p mt-2.5 font-porsche op-50>
+            这是描述这是描述这是描述这是描述这是描述这是描述
+          </p>
+        </div>
+        <div mt-88 fccc gap-2>
+          <span>向下滚动</span>
+          <div animate-pulse>
+            <div i-ic-round-keyboard-double-arrow-down animate-bounce />
+          </div>
+        </div>
+        <!-- title -->
+        <div mt-14 fccc gap-2 font-porsche>
+          <div i-porsche-logo h-2 w-28 />
+          <span tracking-6px>
+            YOUNG
+            <br>
+            DREAM
+          </span>
+        </div>
+      </div>
     </div>
-    <h3 text-primary text-center text-2xl font-600>
-      Taycan 4 Cross Turismo
-    </h3>
-    <p mt-20 text="center #B65B5B" font-sans>
-      你的梦想之旅马上就要开启了
-      <br>
-      在开始之前就先阅读 <span font-600>PYD细则</span>
-    </p>
-    <div mb-30 mt-10 w-full flex justify-center px-5>
-      <Timeline v-model:step="step" :data="['梦想简介', '梦想基金', '梦想实习生', '梦想终章']" />
+    <div pb-12 pt-20 bg="#eeeff2">
+      <!-- 车辆滑块 -->
+      <SwiperCar />
+      <div mt-15 px-15 font-porsche text-primary>
+        <div fccc gap-2>
+          <h3>这是标题</h3>
+          <p op-50>
+            这是描述这是描述这是描述这是描述这是描述这是描述
+          </p>
+        </div>
+        <div mt-5 op-50>
+          介绍young dream计划的文案介绍young dream计划的文案介绍young dream计划的文案介绍young dream计划的文案介绍young dream计划的文案介绍young dream计划的文案介绍young dream计划的文案介绍young dream计划的文案介绍young dream计划的文案介绍yo
+        </div>
+        <!-- 报名 Submit -->
+        <div mt-18>
+          <van-button color="#040609" block @click="showForm">
+            报名开启梦想
+          </van-button>
+        </div>
+      </div>
     </div>
-    <div px-5>
-      <button text="white center" bg-primary h-12 w-full rd-md lh-12>
-        立即开始
-      </button>
-    </div>
+
+    <van-popup
+      v-model:show="formVisible"
+      round
+      closeable
+      position="bottom"
+      :style="{ height: '90%' }"
+    >
+      <TheForm />
+    </van-popup>
   </div>
 </template>
 
-<style scoped>
-.page{
-  background: linear-gradient(180deg, rgba(255, 193, 198, 0.30) 0%, rgba(255, 255, 255, 0.00) 100%), var(--text-text-inverse, #FFF);
+<style lang="scss" scoped>
+.ad-text {
+  background: linear-gradient(180deg, rgba(238, 239, 242, 0.00) 0%, #EEEFF2 100%);
+}
+video{
+  object-fit: fill;
+}
+//全屏按钮
+video::-webkit-media-controls-fullscreen-button {
+    display: none;
+}
+//播放按钮
+video::-webkit-media-controls-play-button {
+    display: none;
+}
+//进度条
+video::-webkit-media-controls-timeline {
+    display: none;
+}
+//观看的当前时间
+video::-webkit-media-controls-current-time-display{
+    display: none;
+}
+//剩余时间
+video::-webkit-media-controls-time-remaining-display {
+    display: none;
+}
+//音量按钮
+video::-webkit-media-controls-mute-button {
+    display: none;
+}
+video::-webkit-media-controls-toggle-closed-captions-button {
+    display: none;
+}
+//音量的控制条
+video::-webkit-media-controls-volume-slider {
+    display: none;
+}
+//所有控件
+video::-webkit-media-controls-enclosure{
+    display: none;
 }
 </style>

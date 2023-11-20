@@ -8,19 +8,23 @@ function onSubmit(values: any) {
   // eslint-disable-next-line no-console
   console.log('submit', values)
 }
+
+const selectIndex = ref(0)
 </script>
 
 <template>
-  <div px-5 py-4 font-porsche text-primary>
-    <h3 text="2xl">
-      报名young dream
-      <br>
-      开启梦想
-    </h3>
-    <p mt-3 op-50>
-      报名介绍文案报名介绍文案报名介绍文案报名介绍文案报名介绍文案报名介绍文案报名介绍文案报
-    </p>
-    <div mt-8>
+  <div pb-4 pt-10 font-porsche text-primary>
+    <div px-5>
+      <h3 text="2xl">
+        报名young dream
+        <br>
+        开启梦想
+      </h3>
+      <p mt-3 op-50>
+        报名介绍文案报名介绍文案报名介绍文案报名介绍文案报名介绍文案报名介绍文案报名介绍文案报
+      </p>
+    </div>
+    <div mt-8 px-2>
       <van-form class="form-reset" @submit="onSubmit">
         <van-cell-group inset title="基本信息" class="text-porsche!">
           <van-field
@@ -36,6 +40,7 @@ function onSubmit(values: any) {
             :rules="[{ required: true, message: '请选择您的身份' }]"
           />
         </van-cell-group>
+        <div h-8 />
         <van-cell-group inset title="联系方式">
           <van-field
             v-model="email"
@@ -50,20 +55,37 @@ function onSubmit(values: any) {
             :rules="[{ required: true, message: '请选择您的手机号' }]"
           />
         </van-cell-group>
-
-        <van-cell-group inset title="备注">
-          <van-field
-            v-model="message"
-            rows="4"
-            autosize
-            type="textarea"
-            maxlength="200"
-            placeholder="请畅所欲言您的想法"
-            show-word-limit
-          />
+        <div h-8 />
+        <van-cell-group inset title="选择您的梦想车型">
+          <div class="noscroll" w-full of-scroll px-0.5 py-1>
+            <div w-fit flex gap-2>
+              <div
+                v-for="(car, idx) in carsMap" :key="car.name" h-24.5 w-45 shrink-0 rd-1 bg-cover
+                :class="selectIndex === idx ? 'ring-2 ring-primary' : ''"
+                :style="{
+                  backgroundImage: `url(${car.img})`,
+                }"
+                @click="selectIndex = idx"
+              />
+            </div>
+          </div>
         </van-cell-group>
-        <div style="margin: 16px;">
-          <van-button round block type="primary" native-type="submit">
+        <div h-8 />
+        <van-cell-group inset title="想法">
+          <div b="~ black op-40" rd-1 p-2>
+            <van-field
+              v-model="message"
+              rows="2"
+              autosize
+              type="textarea"
+              maxlength="200"
+              placeholder="输入您的想法..."
+              show-word-limit
+            />
+          </div>
+        </van-cell-group>
+        <div mt-12 px-4>
+          <van-button color="#040609" block type="primary" native-type="submit">
             提交
           </van-button>
         </div>
@@ -73,6 +95,11 @@ function onSubmit(values: any) {
 </template>
 
 <style lang='scss' scoped>
+.noscroll{
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
 .form-reset{
   --van-cell-horizontal-padding: 0px;
   --van-cell-vertical-padding: 0px;
@@ -87,6 +114,10 @@ function onSubmit(values: any) {
       input{
         margin-top: 0px;
       }
+    }
+
+    &::after{
+      display: none !important;
     }
   }
 }
