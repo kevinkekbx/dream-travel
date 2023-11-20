@@ -52,7 +52,7 @@ const selectIndex = ref(0)
             v-model="phone"
             name="phone"
             placeholder="手机号"
-            :rules="[{ required: true, message: '请选择您的手机号' }]"
+            :rules="[{ required: true, message: '请输入您的手机号' }]"
           />
         </van-cell-group>
         <div h-8 />
