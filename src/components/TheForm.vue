@@ -51,13 +51,20 @@ const selectIndex = ref(0)
             v-model="email"
             name="email"
             placeholder="邮箱"
-            :rules="[{ required: true, message: '请输入您的邮箱' }]"
+            :rules="[
+              { required: true, message: '请输入您的邮箱' },
+              { pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message: '请输入正确的邮箱格式' },
+            ]"
           />
           <van-field
             v-model="phone"
             name="phone"
             placeholder="手机号"
-            :rules="[{ required: true, message: '请输入您的手机号' }]"
+            maxlength="11"
+            :rules="[
+              { required: true, message: '请输入您的手机号' },
+              { pattern: /^1\d{10}$/, message: '请输入正确的手机号' },
+            ]"
           />
         </van-cell-group>
         <div h-8 />

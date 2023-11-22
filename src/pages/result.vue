@@ -1,6 +1,6 @@
 <script lang='ts' setup>
 // TODO
-const isDisabled = ref(true)
+const isDisabled = ref(false)
 
 const router = useRouter()
 

@@ -3,6 +3,7 @@ import { createRouter, createWebHistory } from 'vue-router/auto'
 import App from './App.vue'
 
 import 'swiper/css'
+import 'vant/lib/index.css'
 import '@unocss/reset/tailwind.css'
 import './styles/main.css'
 import 'uno.css'
