@@ -7,6 +7,8 @@ const isApply = ref(false)
 function handleApply() {
   showSuccessToast('已申请')
   isApply.value = true
+
+  handleNextStep()
 }
 </script>
 

@@ -18,6 +18,7 @@ declare module 'vue' {
     Step2: typeof import('./src/components/Step2.vue')['default']
     Step3: typeof import('./src/components/Step3.vue')['default']
     Step4: typeof import('./src/components/Step4.vue')['default']
+    Step5: typeof import('./src/components/Step5.vue')['default']
     SwiperCar: typeof import('./src/components/SwiperCar.vue')['default']
     TheButton: typeof import('./src/components/TheButton.vue')['default']
     TheCounter: typeof import('./src/components/TheCounter.vue')['default']

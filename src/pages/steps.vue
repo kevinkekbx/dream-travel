@@ -18,6 +18,7 @@ const step = ref(global_step)
         <Step2 v-if="step === 2" />
         <Step3 v-if="step === 3" />
         <Step4 v-if="step === 4" />
+        <Step5 v-if="step >= 5" />
       </div>
     </div>
   </div>

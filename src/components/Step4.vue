@@ -4,7 +4,10 @@ const total = ref(2)
 function addYear() {
   if (year.value >= total.value)
     return
+
   year.value += 1
+  if (year.value >= total.value)
+    handleNextStep()
 }
 </script>
 

@@ -6,6 +6,7 @@ const total = ref(300000)
 function handleAddProgress() {
   if (currentRate.value + 10 >= 100) {
     currentRate.value = 100
+    handleNextStep()
     return
   }
   currentRate.value += 10
