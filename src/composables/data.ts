@@ -1,4 +1,4 @@
-export const global_step = ref(4)
+export const global_step = ref(1)
 export const selectedCarIndex = ref(1)
 export const selectedCatModel = computed(() => carsMap[selectedCarIndex.value])
 
@@ -16,3 +16,12 @@ export function handleNextStep(sleep = true, sleepTime = 1500) {
     }
   }
 }
+
+export const userModel = ref({
+  name: '',
+  email: '',
+  phone: '',
+  carIndex: 0,
+  message: '',
+  type: '',
+})

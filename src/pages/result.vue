@@ -19,7 +19,7 @@ function handleStart() {
         {{ isDisabled ? '已提交，报名中' : '报名成功' }}
       </h3>
       <p mt-2 text-lg>
-        姓名｜身份
+        {{ userModel.name }}｜{{ userModel.type }}
       </p>
       <p text-lg>
         梦想车型：718

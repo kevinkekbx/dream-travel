@@ -17,6 +17,11 @@ const steps = [
     desc: '已成为正式员工的你为公司再奋斗两年不过分吧',
   },
 ]
+
+const router = useRouter()
+function handleNext() {
+  router.replace('/steps')
+}
 </script>
 
 <template>
@@ -49,7 +54,7 @@ const steps = [
         </div>
       </div>
       <div mt-12>
-        <van-button color="#040609" block type="primary" native-type="submit">
+        <van-button color="#040609" block type="primary" native-type="submit" @click="handleNext">
           立即开始
         </van-button>
       </div>

@@ -4,17 +4,39 @@ const type = ref('')
 const email = ref('')
 const phone = ref('')
 const message = ref('')
+const selectIndex = ref(0)
 
 const router = useRouter()
 
 function onSubmit(values: any) {
+  const model = {
+    ...values,
+    carIndex: selectIndex.value,
+  }
+
   // eslint-disable-next-line no-console
-  console.log('submit', values)
+  console.log(model, 'model')
+
+  Object.keys(model).forEach((key) => {
+    // eslint-disable-next-line ts/ban-ts-comment
+    // @ts-expect-error
+    userModel.value[key] = model[key]
+  })
 
   router.push('/result')
 }
 
-const selectIndex = ref(0)
+const showPicker = ref(false)
+const columns = [
+  { text: '大学生', value: 'student' },
+  { text: '老师', value: 'teacher' },
+  { text: '其他', value: 'other' },
+]
+function onConfirm(item: any) {
+  const { selectedOptions } = item
+  type.value = selectedOptions[0]?.text
+  showPicker.value = false
+}
 </script>
 
 <template>
@@ -40,9 +62,11 @@ const selectIndex = ref(0)
           />
           <van-field
             v-model="type"
+            readonly
             name="type"
             placeholder="您的身份"
             :rules="[{ required: true, message: '请选择您的身份' }]"
+            @click="showPicker = true"
           />
         </van-cell-group>
         <div h-8 />
@@ -87,6 +111,7 @@ const selectIndex = ref(0)
           <div b="~ black op-40" rd-1 p-2>
             <van-field
               v-model="message"
+              name="message"
               rows="2"
               autosize
               type="textarea"
@@ -103,6 +128,13 @@ const selectIndex = ref(0)
         </div>
       </van-form>
     </div>
+    <van-popup v-model:show="showPicker" position="bottom">
+      <van-picker
+        :columns="columns"
+        @confirm="onConfirm"
+        @cancel="showPicker = false"
+      />
+    </van-popup>
   </div>
 </template>
 

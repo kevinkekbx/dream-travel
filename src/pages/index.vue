@@ -15,6 +15,13 @@ const formVisible = ref(false)
 function showForm() {
   formVisible.value = true
 }
+
+const router = useRouter()
+
+onMounted(() => {
+  if (userModel.value.name)
+    router.replace('/travel')
+})
 </script>
 
 <template>
