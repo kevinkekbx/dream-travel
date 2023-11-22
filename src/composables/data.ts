@@ -1,6 +1,4 @@
 export const global_step = ref(1)
-export const selectedCarIndex = ref(1)
-export const selectedCatModel = computed(() => carsMap[selectedCarIndex.value])
 
 export const test_mode = ref(true)
 
@@ -25,3 +23,6 @@ export const userModel = ref({
   message: '',
   type: '',
 })
+
+export const selectedCarIndex = computed(() => userModel.value.carIndex || 0)
+export const selectedCatModel = computed(() => carsMap[selectedCarIndex.value])

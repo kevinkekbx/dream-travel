@@ -1,18 +1,26 @@
 <script lang='ts' setup>
-// TODO
+import { showSuccessToast } from 'vant'
+
 const isDisabled = ref(false)
 
 const router = useRouter()
 
 function handleStart() {
-  router.push('/travel')
+  isDisabled.value = true
+
+  setTimeout(() => {
+    showSuccessToast('即将进入梦想之旅')
+    setTimeout(() => {
+      router.push('/travel')
+    }, 1500)
+  }, 1500)
 }
 </script>
 
 <template>
   <div bg="#eeeff2" pr min-h-screen pt-16>
     <div>
-      <img :src="carsMap[0].img" :alt="carsMap[0].name">
+      <img :src="selectedCatModel.img" :alt="selectedCatModel.name">
     </div>
     <div mt-16 fccc font-porsche c-primary>
       <h3 text-2xl font-700>
@@ -22,7 +30,7 @@ function handleStart() {
         {{ userModel.name }}｜{{ userModel.type }}
       </p>
       <p text-lg>
-        梦想车型：718
+        梦想车型：{{ selectedCatModel.name }}
       </p>
       <p mt-8 px-11 text-center text-base op-60>
         {{ isDisabled
