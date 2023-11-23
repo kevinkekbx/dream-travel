@@ -10,7 +10,7 @@ import logo from '~/assets/images/logo-white-bg.png'
           梦想实习生
         </div>
         <div text-lg>
-          张三
+          {{ userModel.name }}
         </div>
       </div>
       <img h-11 w-11 :src="logo" alt="" srcset="">

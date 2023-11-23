@@ -14,7 +14,7 @@ function addYear() {
 <template>
   <div w-full>
     <p mt-12 text-center text-base>
-      恭喜你成为porsche正式员工
+      恭喜你成为 Porsche 正式员工
       <br>
       和大家一起努力吧
     </p>
