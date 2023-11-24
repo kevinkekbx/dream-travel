@@ -39,13 +39,15 @@ onMounted(() => {
       />
       <!-- mask -->
       <div absolute bottom-0 left-0 right-0 top-0 h-full w-full bg-black:70>
-        <div px-14 pt-43>
+        <div px-5 pt-43>
           <h3 text-2xl font-porsche>
-            这是标题这是标题这是标题
+            想在 YOUNG 时代追梦保时捷吗？
+            <br>
+            跟随我们的脚步
           </h3>
-          <p mt-2.5 font-porsche op-50>
+          <!-- <p mt-2.5 font-porsche op-50>
             这是描述这是描述这是描述这是描述这是描述这是描述
-          </p>
+          </p> -->
         </div>
         <div mt-88 fccc gap-2>
           <span>向下滚动</span>
@@ -67,15 +69,18 @@ onMounted(() => {
     <div pb-12 pt-20 bg="#eeeff2">
       <!-- 车辆滑块 -->
       <SwiperCar />
-      <div mt-15 px-15 font-porsche text-primary>
+      <div mt-15 px-8 font-porsche text-primary>
         <div fccc gap-2>
-          <h3>这是标题</h3>
-          <p op-50>
+          <h3>PYD梦想之旅</h3>
+          <!-- <p op-50>
             这是描述这是描述这是描述这是描述这是描述这是描述
-          </p>
+          </p> -->
         </div>
-        <div mt-5 op-50>
-          介绍young dream计划的文案介绍young dream计划的文案介绍young dream计划的文案介绍young dream计划的文案介绍young dream计划的文案介绍young dream计划的文案介绍young dream计划的文案介绍young dream计划的文案介绍young dream计划的文案介绍yo
+        <div mt-5 lh-6 op-50>
+          1. 梦想基金：更好的帮助你完成试炼 <br>
+          2. 试炼目标：根据跟你的身份你需要完成一年实现XX万的盈利 <br>
+          3. 实习生：需要你以实习生的身份为公司效力三年 <br>
+          4. 终章：已成为正式员工的你为公司再奋斗两年不过分吧<br>
         </div>
         <!-- 报名 Submit -->
         <div mt-18>

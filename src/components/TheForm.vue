@@ -8,7 +8,7 @@ const selectIndex = ref(0)
 
 const router = useRouter()
 
-function onSubmit(values: any) {
+async function onSubmit(values: any) {
   const model = {
     ...values,
     carIndex: selectIndex.value,
@@ -22,6 +22,19 @@ function onSubmit(values: any) {
     // @ts-expect-error
     userModel.value[key] = model[key]
   })
+
+  // const { data, pending, error, refresh } = await useFetch('http://150.158.43.244:8080/dreamer/submit', {
+  // method: 'POST',
+  // query: {
+  // name: model.name,
+  // type: model.type,
+  // email: model.email,
+  // phone: model.phone,
+  // message: model.message,
+  // carIndex: model.carIndex,
+  // },
+  // body: JSON.stringify(model),
+  // })
 
   router.push('/result')
 }
