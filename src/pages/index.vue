@@ -31,7 +31,7 @@ onMounted(() => {
     <div relative>
       <video
         ref="vRef"
-        controls="false" src="../assets/videos/video2.mp4"
+        controls="false" src="https://static.porsche-preview.cn/static/finder/model-page/cover-video/v3/718.mp4"
         loop autoplay muted h-screen
         webkit-playsinline="true"
         playsinline="true"
