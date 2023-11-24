@@ -1,7 +1,7 @@
 <script lang='ts' setup>
 import { showSuccessToast } from 'vant'
 
-const isDisabled = ref(false)
+const isDisabled = ref(true)
 
 const router = useRouter()
 

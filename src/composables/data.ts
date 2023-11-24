@@ -1,6 +1,6 @@
 export const global_step = ref(1)
 
-export const test_mode = ref(true)
+export const test_mode = ref(false)
 
 export function handleNextStep(sleep = true, sleepTime = 1500) {
   if (test_mode) {

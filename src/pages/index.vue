@@ -32,7 +32,7 @@ onMounted(() => {
       <video
         ref="vRef"
         controls="false" src="https://static.porsche-preview.cn/static/finder/model-page/cover-video/v3/718.mp4"
-        loop autoplay muted h-screen
+        loop autoplay muted h-screen w-full
         webkit-playsinline="true"
         playsinline="true"
         x5-video-player-type="h5-page"
