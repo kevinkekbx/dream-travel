@@ -75,9 +75,9 @@ function onConfirm(item: any) {
         <br>
         开启梦想
       </h3>
-      <p mt-3 op-50>
+      <!-- <p mt-3 op-50>
         报名介绍文案报名介绍文案报名介绍文案报名介绍文案报名介绍文案报名介绍文案报名介绍文案报
-      </p>
+      </p> -->
     </div>
     <div mt-8 px-2>
       <van-form class="form-reset" @submit="onSubmit">
