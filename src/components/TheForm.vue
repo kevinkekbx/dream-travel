@@ -1,4 +1,7 @@
 <script lang='ts' setup>
+import qs from 'query-string'
+import { showSuccessToast, showToast } from 'vant'
+
 const name = ref('')
 const type = ref('')
 const email = ref('')
@@ -23,20 +26,32 @@ async function onSubmit(values: any) {
     userModel.value[key] = model[key]
   })
 
-  // const { data, pending, error, refresh } = await useFetch('http://150.158.43.244:8080/dreamer/submit', {
-  // method: 'POST',
-  // query: {
-  // name: model.name,
-  // type: model.type,
-  // email: model.email,
-  // phone: model.phone,
-  // message: model.message,
-  // carIndex: model.carIndex,
-  // },
-  // body: JSON.stringify(model),
-  // })
+  const str = qs.stringify({
+    age: '10',
+    dreamCar: carsMap[model.carIndex].name,
+    dreamerType: model.type,
+    email: model.email,
+    goldenIdea: model.message,
+    nickName: model.name,
+    phone: model.phone,
+  })
 
-  router.push('/result')
+  const url = `http://150.158.43.244:8080/dreamer/submit?${str}`
+
+  const { data, error } = await useFetch(url).post().json()
+
+  if (data.value.code === 200) {
+    showSuccessToast('报名成功， 请等待审核')
+    setTimeout(() => {
+      router.push('/result')
+    }, 1000)
+  }
+  else {
+    showToast(data.value.message)
+  }
+
+  if (error.value)
+    showToast(error.value.message)
 }
 
 const showPicker = ref(false)
