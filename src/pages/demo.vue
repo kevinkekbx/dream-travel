@@ -15,6 +15,7 @@ const router = useRouter()
 
 onMounted(() => {})
 
+// @ts-expect-error something wrong
 const s = new C3D.Stage()
 s.size(window.innerWidth, window.innerHeight)
   .material({
@@ -24,6 +25,7 @@ s.size(window.innerWidth, window.innerHeight)
 document.body.appendChild(s.el)
 
 // 创建一个三维容器（创建以方便分组使用）
+// @ts-expect-error something wrong
 const sp = new C3D.Sprite()
 sp.position(0, 0, -500).update()
 s.addChild(sp)
@@ -40,11 +42,13 @@ const bgDaa = [
 ]
 
 setTimeout(() => {
+  // @ts-expect-error something wrong
   const spa = new C3D.Sprite()
   spa.position(0, 0, -500).update()
   s.addChild(spa)
 
   // 911 Move
+  // @ts-expect-error something wrong
   const pa = new C3D.Plane()
   pa.size(window.innerWidth, window.innerHeight)
     .position(0, 0, 0)
@@ -69,6 +73,7 @@ setTimeout(() => {
 }, 1000)
 
 // 911 Move
+// @ts-expect-error something wrong
 const p = new C3D.Plane()
 p.size(150, 70)
   .position(20, 0, 0)
@@ -91,11 +96,13 @@ requestAnimationFrame(moveA)
 
 // ================================
 setTimeout(() => {
+  // @ts-expect-error something wrong
   const sp2 = new C3D.Sprite()
   sp2.position(0, 0, -500).update()
   s.addChild(sp2)
 
   // 911 Move
+  // @ts-expect-error something wrong
   const p2 = new C3D.Plane()
   p2.size(500, 282)
     .position(0, 0, 0)
@@ -122,11 +129,13 @@ setTimeout(() => {
 // ========================
 
 setTimeout(() => {
+  // @ts-expect-error something wrong
   const sp3 = new C3D.Sprite()
   sp3.position(10, -50, -1000).update()
   s.addChild(sp3)
 
   // 911 Move
+  // @ts-expect-error something wrong
   const p3 = new C3D.Plane()
   p3.size(150, 70)
     .position(0, -90, 0)
@@ -151,11 +160,13 @@ setTimeout(() => {
 }, 3000)
 
 setTimeout(() => {
+  // @ts-expect-error something wrong
   const sp4 = new C3D.Sprite()
   sp4.position(10, -550, -1000).update()
   s.addChild(sp4)
 
   // 911 Move
+  // @ts-expect-error something wrong
   const p4 = new C3D.Plane()
   p4.size(250, 334)
     .position(0, 0, 0)
@@ -182,7 +193,10 @@ setTimeout(() => {
     // requestAnimationFrame(moveD)
   }
 
-  document.getElementById('bg').style.display = ''
+  const bgDom = document.getElementById('bg')
+  if (bgDom)
+    bgDom.style.display = ''
+
   requestAnimationFrame(moveD)
 }, 5000)
 
