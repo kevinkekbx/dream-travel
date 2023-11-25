@@ -12,6 +12,7 @@ import Img_Road from '~/assets/cars/road.jpg'
 import Img_DreamTxt from '~/assets/catchDreamTxt.png'
 import Img_Circle from '~/assets/cars/circle.png'
 import Img_Play from '~/assets/cars/play.png'
+import Img_9112 from '~/assets/cars/911-21.png'
 
 import audioSrc from '~/assets/bgm.mp3'
 
@@ -37,7 +38,7 @@ a.size(window.innerWidth, window.innerHeight)
     // image: Img_Circle,
     // repeat: 'no-repeat',
     // bothsides: false,
-    color: '#000000',
+    color: '#0ffccc',
   })
   .update()
 document.body.appendChild(a.el)
@@ -85,10 +86,28 @@ sp4a1.on('click', () => {
   buildSecond()
 
   if (vRef.value)
-    // vRef.value.paused = false
     vRef.value.autoplay = true
   vRef.value?.play()
 })
+
+// ---------------------------
+const sp4a2 = new C3D.Sprite()
+sp4a2.position(0, 370, -700).update()
+a.addChild(sp4a2)
+
+const p4a2 = new C3D.Plane()
+p4a2
+  .size(window.innerWidth, 270)
+  .position(60, 0, 0)
+  // .rotation(10, 20, 10)
+  .material({
+    image: Img_9112,
+    repeat: 'no-repeat',
+    bothsides: false,
+  })
+  .buttonMode(true)
+  .update()
+sp4a2.addChild(p4a2)
 
 function buildSecond() {
   // @ts-expect-error something wrong
@@ -364,7 +383,6 @@ function startDream() {
   <audio ref="vRef" controls autoplay>
     <source type="audio/mp3" :src="audioSrc">
   </audio>
-
   <div v-show="false" id="bg" class="bg">
     <div id="zmzl">
       追梦之旅
