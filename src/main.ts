@@ -2,10 +2,12 @@ import { createApp } from 'vue'
 import { createRouter, createWebHistory } from 'vue-router/auto'
 import App from './App.vue'
 
-import 'swiper/css'
 import '@unocss/reset/tailwind.css'
-import './styles/main.css'
+import 'swiper/css'
 import 'uno.css'
+
+// import './pages/css3d.js'
+import './styles/main.css'
 
 const app = createApp(App)
 const router = createRouter({
