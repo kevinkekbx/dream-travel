@@ -79,7 +79,9 @@ async function onSubmit(values: any) {
 const showPicker = ref(false)
 const columns = [
   { text: '大学生', value: 'student' },
-  { text: '老师', value: 'teacher' },
+  { text: '职场新人', value: 'new' },
+  { text: '创业者', value: 'entrepreneur' },
+  { text: '投资人', value: 'investor' },
   { text: '其他', value: 'other' },
 ]
 function onConfirm(item: any) {
