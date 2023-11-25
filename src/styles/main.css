@@ -35,3 +35,13 @@ html.dark {
 .van-popup.van-toast {
   background: var(--van-toast-background);
 }
+
+:root {
+  --van-overlay-background: (0,0,0,0.7);
+  --van-popup-background: #fff;
+}
+
+.dark {
+  --van-overlay-background: (255,255,255,0.7);
+  --van-popup-background: black;
+}
