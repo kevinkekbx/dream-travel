@@ -10,22 +10,24 @@ const step = defineModel('step', {
 </script>
 
 <template>
-  <div flex gap-20>
-    <div v-for="(item, idx) in data" :key="item">
+  <div flex gap-17>
+    <div v-for="(item, idx) in data" :key="item" h="52px">
       <div
-        bg-primary relative h-5 w-5 rd-full lh-5
-        text="xs white center"
-        un-after="content-empty h-1px w-20 b-t b-t-primary absolute right-5 top-1/2 translate-y--50%"
+        relative h-6 w-6 fcc rd-full
+        text="primary center"
+        b="1 primary"
+        un-after="content-empty h-1px w-17 b-t b-t-primary absolute right-6 top-1/2 translate-y--50%"
         :class="[
           idx === 0 ? 'after-hidden' : '',
-          idx + 1 > step ? 'bg-gray! after-b-t-gray! after-b-t-dashed!' : '',
+          idx + 1 > step ? 'after-b-t-primary/25! text-primary/70 after-b-op-70! b-op-70!' : '',
+          idx + 1 === step ? 'bg-primary text-white' : '',
         ]"
       >
-        {{ idx }}
+        <span v-if="idx + 1 >= step">{{ idx + 1 }}</span>
+        <div v-else i-ic-baseline-check />
         <span
-          text-primary
-          class="absolute bottom--100% left-1/2 translate-x--50%"
-          whitespace-nowrap
+          class="absolute bottom-[calc(-100%-8px)] left-1/2 translate-x--50%"
+          whitespace-nowrap text-primary
         >{{ item }}</span>
       </div>
     </div>

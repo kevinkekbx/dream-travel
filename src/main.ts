@@ -5,6 +5,7 @@ import App from './App.vue'
 import '@unocss/reset/tailwind.css'
 import 'swiper/css'
 import 'uno.css'
+import 'vant/lib/index.css'
 
 // import './pages/css3d.js'
 import './styles/main.css'

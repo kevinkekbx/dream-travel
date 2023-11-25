@@ -15,6 +15,23 @@ const formVisible = ref(false)
 function showForm() {
   formVisible.value = true
 }
+
+const router = useRouter()
+
+onMounted(() => {
+  // if (userModel.value.name)
+  //   router.replace('/travel')
+})
+
+function startDream() {
+  if (!userModel.value.id)
+    return showForm()
+
+  if (userModel.value.status === 0)
+    router.push('/result')
+  else if (userModel.value.status === 1)
+    router.push('/travel')
+}
 </script>
 
 <template>
@@ -24,23 +41,25 @@ function showForm() {
     <div relative>
       <video
         ref="vRef"
-        controls="false" src="../assets/videos/video2.mp4"
-        loop autoplay muted h-screen
+        controls="false" src="https://static.porsche-preview.cn/static/finder/model-page/cover-video/v3/718.mp4"
+        loop autoplay muted h-screen w-full
         webkit-playsinline="true"
         playsinline="true"
         x5-video-player-type="h5-page"
       />
       <!-- mask -->
       <div absolute bottom-0 left-0 right-0 top-0 h-full w-full bg-black:70>
-        <div px-14 pt-43>
+        <div px-5 pt-43>
           <h3 text-2xl font-porsche>
-            这是标题这是标题这是标题
+            想在 YOUNG 时代追梦保时捷吗？
+            <br>
+            跟随我们的脚步
           </h3>
-          <p mt-2.5 font-porsche op-50>
+          <!-- <p mt-2.5 font-porsche op-50>
             这是描述这是描述这是描述这是描述这是描述这是描述
-          </p>
+          </p> -->
         </div>
-        <div mt-88 fccc gap-2>
+        <div mt-88 fccc gap-2 text-white>
           <span>向下滚动</span>
           <div animate-pulse>
             <div i-ic-round-keyboard-double-arrow-down animate-bounce />
@@ -49,7 +68,7 @@ function showForm() {
         <!-- title -->
         <div mt-14 fccc gap-2 font-porsche>
           <div i-porsche-logo h-2 w-28 />
-          <span tracking-6px>
+          <span tracking-6px text-white>
             YOUNG
             <br>
             DREAM
@@ -60,19 +79,22 @@ function showForm() {
     <div pb-12 pt-20 bg="#eeeff2">
       <!-- 车辆滑块 -->
       <SwiperCar />
-      <div mt-15 px-15 font-porsche text-primary>
+      <div mt-15 px-8 font-porsche text-primary>
         <div fccc gap-2>
-          <h3>这是标题</h3>
-          <p op-50>
+          <h3>PYD梦想之旅</h3>
+          <!-- <p op-50>
             这是描述这是描述这是描述这是描述这是描述这是描述
-          </p>
+          </p> -->
         </div>
-        <div mt-5 op-50>
-          介绍young dream计划的文案介绍young dream计划的文案介绍young dream计划的文案介绍young dream计划的文案介绍young dream计划的文案介绍young dream计划的文案介绍young dream计划的文案介绍young dream计划的文案介绍young dream计划的文案介绍yo
+        <div mt-5 lh-6 op-50>
+          1. 梦想基金：更好的帮助你完成试炼 <br>
+          2. 试炼目标：根据跟你的身份你需要完成一年实现XX万的盈利 <br>
+          3. 实习生：需要你以实习生的身份为公司效力三年 <br>
+          4. 终章：已成为正式员工的你为公司再奋斗两年不过分吧<br>
         </div>
         <!-- 报名 Submit -->
         <div mt-18>
-          <van-button color="#040609" block @click="showForm">
+          <van-button color="#040609" block @click="startDream()">
             报名开启梦想
           </van-button>
         </div>

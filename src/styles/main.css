@@ -30,3 +30,8 @@ html.dark {
   font-weight: 600;
   src: url(../assets/fonts/PorscheNext-Bold.otf);
 }
+
+
+.van-popup.van-toast {
+  background: var(--van-toast-background);
+}

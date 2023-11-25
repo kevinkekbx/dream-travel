@@ -7,9 +7,18 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
+    AimCarMask: typeof import('./src/components/AimCarMask.vue')['default']
+    CarIdCard: typeof import('./src/components/CarIdCard.vue')['default']
+    copy: typeof import('./src/components/Step3 copy.vue')['default']
     HeaderMenu: typeof import('./src/components/HeaderMenu.vue')['default']
+    PorscheIdCard: typeof import('./src/components/PorscheIdCard.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    Step1: typeof import('./src/components/Step1.vue')['default']
+    Step2: typeof import('./src/components/Step2.vue')['default']
+    Step3: typeof import('./src/components/Step3.vue')['default']
+    Step4: typeof import('./src/components/Step4.vue')['default']
+    Step5: typeof import('./src/components/Step5.vue')['default']
     SwiperCar: typeof import('./src/components/SwiperCar.vue')['default']
     TheButton: typeof import('./src/components/TheButton.vue')['default']
     TheCounter: typeof import('./src/components/TheCounter.vue')['default']
@@ -19,9 +28,12 @@ declare module 'vue' {
     Timeline: typeof import('./src/components/Timeline.vue')['default']
     VanButton: typeof import('vant/es')['Button']
     VanCellGroup: typeof import('vant/es')['CellGroup']
+    VanCircle: typeof import('vant/es')['Circle']
     VanField: typeof import('vant/es')['Field']
     VanForm: typeof import('vant/es')['Form']
+    VanPicker: typeof import('vant/es')['Picker']
     VanPopup: typeof import('vant/es')['Popup']
+    VanProgress: typeof import('vant/es')['Progress']
     VanSwipe: typeof import('vant/es')['Swipe']
     VanSwipeItem: typeof import('vant/es')['SwipeItem']
   }

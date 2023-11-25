@@ -1,20 +1,94 @@
 <script lang='ts' setup>
+import qs from 'query-string'
+import { showSuccessToast, showToast } from 'vant'
+
 const name = ref('')
 const type = ref('')
 const email = ref('')
 const phone = ref('')
 const message = ref('')
+const selectIndex = ref(0)
 
 const router = useRouter()
 
-function onSubmit(values: any) {
-  // eslint-disable-next-line no-console
-  console.log('submit', values)
+const loading = ref(false)
 
-  router.push('/result')
+async function onSubmit(values: any) {
+  loading.value = true
+  const model = {
+    ...values,
+    carIndex: selectIndex.value,
+  }
+
+  // eslint-disable-next-line no-console
+  console.log(model, 'model')
+
+  Object.keys(model).forEach((key) => {
+    // eslint-disable-next-line ts/ban-ts-comment
+    // @ts-expect-error
+    userModel.value[key] = model[key]
+  })
+
+  const modelForm: any = {
+    age: '10',
+    dreamCar: carsMap[model.carIndex].name,
+    dreamerType: model.type,
+    email: model.email,
+    goldenIdea: model.message,
+    nickName: model.name,
+    phone: model.phone,
+  }
+
+  const str = qs.stringify(modelForm)
+
+  const url = `http://150.158.43.244:8080/dreamer/submit?${str}`
+
+  try {
+    const { data, error } = await useFetch(url).post().json()
+
+    if (data.value.code === 200) {
+      const id = data.value.data.id
+      const status = data.value.data.status
+
+      userModel.value.carIndex = model.carIndex
+      userModel.value.id = id
+      userModel.value.status = status
+      userModel.value.name = model.name
+      userModel.value.type = model.type
+      userModel.value.email = model.email
+      userModel.value.phone = model.phone
+      userModel.value.message = model.message
+
+      showSuccessToast('报名成功， 请等待审核')
+      setTimeout(() => {
+        router.push('/result')
+      }, 1000)
+    }
+    else {
+      showToast(data.value.message)
+    }
+
+    if (error.value)
+      showToast(error.value.message)
+  }
+  finally {
+    loading.value = false
+  }
 }
 
-const selectIndex = ref(0)
+const showPicker = ref(false)
+const columns = [
+  { text: '大学生', value: 'student' },
+  { text: '职场新人', value: 'new' },
+  { text: '创业者', value: 'entrepreneur' },
+  { text: '投资人', value: 'investor' },
+  { text: '其他', value: 'other' },
+]
+function onConfirm(item: any) {
+  const { selectedOptions } = item
+  type.value = selectedOptions[0]?.text
+  showPicker.value = false
+}
 </script>
 
 <template>
@@ -25,9 +99,9 @@ const selectIndex = ref(0)
         <br>
         开启梦想
       </h3>
-      <p mt-3 op-50>
+      <!-- <p mt-3 op-50>
         报名介绍文案报名介绍文案报名介绍文案报名介绍文案报名介绍文案报名介绍文案报名介绍文案报
-      </p>
+      </p> -->
     </div>
     <div mt-8 px-2>
       <van-form class="form-reset" @submit="onSubmit">
@@ -40,9 +114,11 @@ const selectIndex = ref(0)
           />
           <van-field
             v-model="type"
+            readonly
             name="type"
             placeholder="您的身份"
             :rules="[{ required: true, message: '请选择您的身份' }]"
+            @click="showPicker = true"
           />
         </van-cell-group>
         <div h-8 />
@@ -51,13 +127,20 @@ const selectIndex = ref(0)
             v-model="email"
             name="email"
             placeholder="邮箱"
-            :rules="[{ required: true, message: '请输入您的邮箱' }]"
+            :rules="[
+              { required: true, message: '请输入您的邮箱' },
+              { pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message: '请输入正确的邮箱格式' },
+            ]"
           />
           <van-field
             v-model="phone"
             name="phone"
             placeholder="手机号"
-            :rules="[{ required: true, message: '请输入您的手机号' }]"
+            maxlength="11"
+            :rules="[
+              { required: true, message: '请输入您的手机号' },
+              { pattern: /^1\d{10}$/, message: '请输入正确的手机号' },
+            ]"
           />
         </van-cell-group>
         <div h-8 />
@@ -80,6 +163,7 @@ const selectIndex = ref(0)
           <div b="~ black op-40" rd-1 p-2>
             <van-field
               v-model="message"
+              name="message"
               rows="2"
               autosize
               type="textarea"
@@ -90,12 +174,19 @@ const selectIndex = ref(0)
           </div>
         </van-cell-group>
         <div mt-12 px-4>
-          <van-button color="#040609" block type="primary" native-type="submit">
+          <van-button :loading="loading" color="#040609" block type="primary" native-type="submit">
             提交
           </van-button>
         </div>
       </van-form>
     </div>
+    <van-popup v-model:show="showPicker" position="bottom">
+      <van-picker
+        :columns="columns"
+        @confirm="onConfirm"
+        @cancel="showPicker = false"
+      />
+    </van-popup>
   </div>
 </template>
 
