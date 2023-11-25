@@ -5,5 +5,6 @@
 <template>
   <main text="primary dark:gray-200">
     <RouterView />
+    <Bot />
   </main>
 </template>

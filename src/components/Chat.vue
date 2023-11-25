@@ -76,7 +76,7 @@ function handleCopy(content: string) {
 </script>
 
 <template>
-  <div pr h-screen of-scroll pb-15 class="layout">
+  <div pr h-full of-scroll pb-15 class="layout">
     <div px-4 py-6>
       <div text-primary space-y-2 dark:text-white>
         <div v-for="item in historyList" :key="item.content" w-full flex :class="[item.type === 'user' ? 'justify-end' : 'justify-start', item.show ? '' : 'hidden!']">
@@ -108,7 +108,7 @@ function handleCopy(content: string) {
       </div>
     </div>
     <div pf bottom-0 h-15 w-full fcc gap-2 b-t px-4 backdrop-blur class="inputGroup">
-      <van-field v-model="input" b rd-full bg-white dark:bg-primary dark-text-white />
+      <van-field v-model="input" placeholder="保时捷助手为您服务～" b rd-full bg-white dark:bg-primary dark-text-white />
       <div aspect-square class="h-11.5" fcc shrink-0 b rd-full :class="loading ? 'op-50' : ''" @click="handleSend">
         <span i-ic-baseline-send />
       </div>

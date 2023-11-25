@@ -8,7 +8,9 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     AimCarMask: typeof import('./src/components/AimCarMask.vue')['default']
+    Bot: typeof import('./src/components/Bot.vue')['default']
     CarIdCard: typeof import('./src/components/CarIdCard.vue')['default']
+    Chat: typeof import('./src/components/Chat.vue')['default']
     copy: typeof import('./src/components/Step3 copy.vue')['default']
     HeaderMenu: typeof import('./src/components/HeaderMenu.vue')['default']
     PorscheIdCard: typeof import('./src/components/PorscheIdCard.vue')['default']

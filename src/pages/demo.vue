@@ -23,7 +23,7 @@ onMounted(() => {
   if (vRef.value)
     // vRef.value.paused = false
     vRef.value.autoplay = true
-  vRef.value.play()
+  vRef.value?.play()
 })
 
 // @ts-expect-error something wrong
@@ -240,11 +240,13 @@ setTimeout(() => {
 
 // 创建20个平面放入容器，并定义鼠标事件
 setTimeout(() => {
+  // @ts-expect-error something wrong
   const sp7 = new C3D.Sprite()
   sp7.position(0, -200, -1000).update()
   s.addChild(sp7)
 
   for (let i = 0; i < 20; i++) {
+    // @ts-expect-error something wrong
     const p = new C3D.Plane()
     p.size(100)
       .position(
