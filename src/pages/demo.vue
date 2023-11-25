@@ -9,11 +9,22 @@ import Img_Taycan from '~/assets/cars/Taycan-11.png'
 import Img_Cloud from '~/assets/cloud.png'
 import Img_Logo from '~/assets/cars/logo.webp'
 import Img_Road from '~/assets/cars/road.jpg'
+import Img_DreamTxt from '~/assets/catchDreamTxt.png'
 
-const vRef = ref<HTMLVideoElement>()
+import audioSrc from '~/assets/bgm.mp3'
+
+const vRef = ref<HTMLAudioElement>()
 const router = useRouter()
 
-onMounted(() => {})
+onMounted(() => {
+  // console.log('vRef', vRef)
+  // vRef.value?.play()
+
+  if (vRef.value)
+    // vRef.value.paused = false
+    vRef.value.autoplay = true
+  vRef.value.play()
+})
 
 // @ts-expect-error something wrong
 const s = new C3D.Stage()
@@ -39,6 +50,7 @@ const bgDaa = [
   { url: Img_Taycan },
   { url: Img_Cloud },
   { url: Img_Logo },
+  { url: Img_DreamTxt },
 ]
 
 setTimeout(() => {
@@ -124,10 +136,6 @@ setTimeout(() => {
   requestAnimationFrame(moveB)
 }, 1000)
 
-// -----------------------------------
-
-// ========================
-
 setTimeout(() => {
   // @ts-expect-error something wrong
   const sp3 = new C3D.Sprite()
@@ -165,7 +173,6 @@ setTimeout(() => {
   sp4.position(10, -550, -1000).update()
   s.addChild(sp4)
 
-  // 911 Move
   // @ts-expect-error something wrong
   const p4 = new C3D.Plane()
   p4.size(250, 334)
@@ -186,11 +193,11 @@ setTimeout(() => {
   })
 
   function moveD() {
-    // sp3.rotate(0, 0, 5).updateT()
-    sp4.move(0, 0, 25).updateT()
+    // sp4.rotate(0, 5, 0).updateT()
+    // sp4.move(0, 0, 25).updateT()
     sp4.scale(0.3, 0.3, 0.3).updateT()
 
-    // requestAnimationFrame(moveD)
+    requestAnimationFrame(moveD)
   }
 
   const bgDom = document.getElementById('bg')
@@ -198,31 +205,100 @@ setTimeout(() => {
     bgDom.style.display = ''
 
   requestAnimationFrame(moveD)
-}, 5000)
+}, 10000)
 
+setTimeout(() => {
+  // @ts-expect-error something wrong
+  const sp5 = new C3D.Sprite()
+  sp5.position(0, -200, -1000).update()
+  s.addChild(sp5)
+
+  // @ts-expect-error something wrong
+  const p5 = new C3D.Plane()
+  p5.size(180, 54)
+    .position(0, 0, 0)
+    // .rotation(10, 20, 0)
+    .material({
+      image: bgDaa[8].url,
+      repeat: 'no-repeat',
+      bothsides: false,
+    })
+    .buttonMode(true)
+    .update()
+  sp5.addChild(p5)
+
+  function moveE() {
+    // sp4.rotate(0, 5, 0).updateT()
+    sp5.move(0, 0, 25).updateT()
+    sp5.scale(1.8, 1.8, 1.8).updateT()
+
+    requestAnimationFrame(moveE)
+  }
+
+  requestAnimationFrame(moveE)
+}, 4000)
+
+// 创建20个平面放入容器，并定义鼠标事件
+setTimeout(() => {
+  const sp7 = new C3D.Sprite()
+  sp7.position(0, -200, -1000).update()
+  s.addChild(sp7)
+
+  for (let i = 0; i < 20; i++) {
+    const p = new C3D.Plane()
+    p.size(100)
+      .position(
+        Math.random() * 500 - 250,
+        Math.random() * 500 - 250,
+        Math.random() * 500 - 250,
+      )
+      .rotation(
+        Math.random() * 300 - 150,
+        Math.random() * 300 - 150,
+        Math.random() * 300 - 150,
+      )
+      .material({
+        color: C3D.getRandomColor(),
+      })
+      .buttonMode(true)
+      .update()
+    sp7.addChild(p)
+  }
+
+  function go() {
+    // sp4.rotate(0, 5, 0).updateT()
+    sp7.rotate(0, 0, 5).updateT()
+    sp7.move(0, 8, 0).update()
+    requestAnimationFrame(go)
+  }
+
+  requestAnimationFrame(go)
+}, 6000)
+
+// ========================
 setTimeout(() => {
   s.size(window.innerWidth, window.innerHeight)
     .material({
       image: Img_Road,
       repeat: 'round',
       bothsides: false,
-    }).update()
-}, 5000)
+    })
+    .update()
+}, 10000)
 
 function startDream() {
-  // eslint-disable-next-line no-console
-  console.log('startDream')
+  document.body.removeChild(s.el)
   router.push('/')
 }
 </script>
 
 <template>
-  <audio ref="vRef" controls class="aud">
-    <source src="../assets/bgm.mp3">
+  <audio ref="vRef" controls autoplay>
+    <source type="audio/mp3" :src="audioSrc">
   </audio>
 
   <div v-show="false" id="bg" class="bg">
-    <div>
+    <div id="zmzl">
       追梦之旅
     </div>
 
@@ -240,7 +316,7 @@ function startDream() {
 </template>
 
 <style lang="scss" scoped>
-.bg{
+.bg {
   color: #fff;
   position: absolute;
   z-index: 9;
@@ -249,7 +325,7 @@ function startDream() {
   width: 100%;
   font-size: 48px;
 }
-.logo-area{
+.logo-area {
   position: absolute;
   z-index: 9;
   text-align: center;
