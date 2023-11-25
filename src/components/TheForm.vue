@@ -11,7 +11,10 @@ const selectIndex = ref(0)
 
 const router = useRouter()
 
+const loading = ref(false)
+
 async function onSubmit(values: any) {
+  loading.value = true
   const model = {
     ...values,
     carIndex: selectIndex.value,
@@ -26,7 +29,7 @@ async function onSubmit(values: any) {
     userModel.value[key] = model[key]
   })
 
-  const str = qs.stringify({
+  const modelForm: any = {
     age: '10',
     dreamCar: carsMap[model.carIndex].name,
     dreamerType: model.type,
@@ -34,24 +37,43 @@ async function onSubmit(values: any) {
     goldenIdea: model.message,
     nickName: model.name,
     phone: model.phone,
-  })
+  }
+
+  const str = qs.stringify(modelForm)
 
   const url = `http://150.158.43.244:8080/dreamer/submit?${str}`
 
-  const { data, error } = await useFetch(url).post().json()
+  try {
+    const { data, error } = await useFetch(url).post().json()
 
-  if (data.value.code === 200) {
-    showSuccessToast('报名成功， 请等待审核')
-    setTimeout(() => {
-      router.push('/result')
-    }, 1000)
-  }
-  else {
-    showToast(data.value.message)
-  }
+    if (data.value.code === 200) {
+      const id = data.value.data.id
+      const status = data.value.data.status
 
-  if (error.value)
-    showToast(error.value.message)
+      userModel.value.carIndex = model.carIndex
+      userModel.value.id = id
+      userModel.value.status = status
+      userModel.value.name = model.name
+      userModel.value.type = model.type
+      userModel.value.email = model.email
+      userModel.value.phone = model.phone
+      userModel.value.message = model.message
+
+      showSuccessToast('报名成功， 请等待审核')
+      setTimeout(() => {
+        router.push('/result')
+      }, 1000)
+    }
+    else {
+      showToast(data.value.message)
+    }
+
+    if (error.value)
+      showToast(error.value.message)
+  }
+  finally {
+    loading.value = false
+  }
 }
 
 const showPicker = ref(false)
@@ -150,7 +172,7 @@ function onConfirm(item: any) {
           </div>
         </van-cell-group>
         <div mt-12 px-4>
-          <van-button color="#040609" block type="primary" native-type="submit">
+          <van-button :loading="loading" color="#040609" block type="primary" native-type="submit">
             提交
           </van-button>
         </div>

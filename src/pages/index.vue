@@ -19,9 +19,19 @@ function showForm() {
 const router = useRouter()
 
 onMounted(() => {
-  if (userModel.value.name)
-    router.replace('/travel')
+  // if (userModel.value.name)
+  //   router.replace('/travel')
 })
+
+function startDream() {
+  if (!userModel.value.id)
+    return showForm()
+
+  if (userModel.value.status === 0)
+    router.push('/result')
+  else if (userModel.value.status === 1)
+    router.push('/travel')
+}
 </script>
 
 <template>
@@ -84,7 +94,7 @@ onMounted(() => {
         </div>
         <!-- 报名 Submit -->
         <div mt-18>
-          <van-button color="#040609" block @click="showForm">
+          <van-button color="#040609" block @click="startDream()">
             报名开启梦想
           </van-button>
         </div>

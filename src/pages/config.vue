@@ -35,7 +35,7 @@ const list = ref<User[]>([])
 async function fetchSignUpList() {
   const { data } = await useFetch('http://150.158.43.244:8080/dreamer/list?page=0&size=0').post().json()
   if (data.value)
-    list.value = data.value.data.list
+    list.value = (data.value?.data?.list || []).reverse()
 }
 
 onMounted(async () => {
@@ -53,17 +53,19 @@ function rejectIt(u: User) {
 }
 
 async function resolveIt(u: User) {
-  const model = {
-    dreamerId: u.id,
-    status: 0,
+  if (type === 'SIGN_UP') {
+    const model = {
+      dreamerId: u.id,
+      status: 0,
+    }
+    const url = `http://150.158.43.244:8080/dream/process/update?${qs.stringify(model)}`
+    const { data } = await useFetch(url).post().json()
+    if (data.value.code === 200) {
+      showSuccessToast('操作成功')
+      fetchSignUpList()
+    }
+    else { showToast(data.value.message) }
   }
-  const url = `http://150.158.43.244:8080/dream/process/add?${qs.stringify(model)}`
-  const { data } = await useFetch(url).post().json()
-  if (data.value.code === 200) {
-    showSuccessToast('操作成功')
-    fetchSignUpList()
-  }
-  else { showToast(data.value.message) }
 }
 </script>
 
@@ -76,13 +78,13 @@ async function resolveIt(u: User) {
     </h3>
     <div mt-7.5 fccc gap-3>
       <div v-for="u in list" :key="u.id" w-full rd-1 bg-white p-4>
-        <div fbc text-lg fw-700>
+        <div fbc gap-2 text-lg fw-700>
           <div>
             <span>{{ u.nickName }}</span>
             <span mx-1 fw-normal>|</span>
             <span>{{ u.dreamerType }}</span>
           </div>
-          <span>梦想车型： {{ u.dreamCar }}</span>
+          <span>梦想车型：{{ u.dreamCar }}</span>
         </div>
         <div op-50>
           {{ u.email }}

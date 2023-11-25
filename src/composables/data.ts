@@ -15,14 +15,18 @@ export function handleNextStep(sleep = true, sleepTime = 1500) {
   }
 }
 
-export const userModel = ref({
+const defaultUserModel = {
   name: '',
   email: '',
   phone: '',
   carIndex: 0,
   message: '',
   type: '',
-})
+  id: '',
+  status: -2,
+}
+
+export const userModel = useLocalStorage('user', defaultUserModel)
 
 export const selectedCarIndex = computed(() => userModel.value.carIndex || 0)
 export const selectedCatModel = computed(() => carsMap[selectedCarIndex.value])
