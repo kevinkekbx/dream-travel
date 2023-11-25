@@ -59,7 +59,7 @@ function startDream() {
             这是描述这是描述这是描述这是描述这是描述这是描述
           </p> -->
         </div>
-        <div mt-88 fccc gap-2>
+        <div mt-88 fccc gap-2 text-white>
           <span>向下滚动</span>
           <div animate-pulse>
             <div i-ic-round-keyboard-double-arrow-down animate-bounce />
@@ -68,7 +68,7 @@ function startDream() {
         <!-- title -->
         <div mt-14 fccc gap-2 font-porsche>
           <div i-porsche-logo h-2 w-28 />
-          <span tracking-6px>
+          <span tracking-6px text-white>
             YOUNG
             <br>
             DREAM
