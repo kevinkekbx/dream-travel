@@ -1,6 +1,6 @@
+import { FileSystemIconLoader } from '@iconify/utils/lib/loader/node-loaders'
 import { defineConfig } from 'unocss'
 import { presetUseful } from 'unocss-preset-useful'
-import { FileSystemIconLoader } from '@iconify/utils/lib/loader/node-loaders'
 
 export default defineConfig({
   theme: {
@@ -25,6 +25,11 @@ export default defineConfig({
             './src/assets/icons',
             svg => svg.replace(/#fff/, 'currentColor'),
           ),
+        },
+      },
+      webFonts: {
+        fonts: {
+          ab: 'Alex Brush',
         },
       },
     }),

@@ -303,9 +303,13 @@ function startDream() {
     </div>
 
     <div mt-33 fccc flex gap-2 text-16px @click="startDream">
-      <span>向下滚动</span>
+      <!-- <span>向下滚动</span>
       <div animate-pulse>
         <div i-ic-round-keyboard-double-arrow-down animate-bounce />
+      </div> -->
+      <div animate-bounce text-48px font-ab c-red>
+        <!-- <img src="../assets/run.png"> -->
+        Run!!!
       </div>
     </div>
 
