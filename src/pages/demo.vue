@@ -13,36 +13,31 @@ import Img_DreamTxt from '~/assets/catchDreamTxt.png'
 import Img_Circle from '~/assets/cars/circle.png'
 import Img_Play from '~/assets/cars/play.png'
 import Img_9112 from '~/assets/cars/911-21.png'
+import Img_Catcher from '~/assets/DreamCatcher.png'
+import Img_BlackSky from '~/assets/blacksky.png'
 
 import audioSrc from '~/assets/bgm.mp3'
 
 const vRef = ref<HTMLAudioElement>()
 const router = useRouter()
 
-onMounted(() => {
-  // console.log('vRef', vRef)
-  // vRef.value?.play()
-
-  // if (vRef.value)
-  //   // vRef.value.paused = false
-  //   vRef.value.autoplay = true
-  // vRef.value?.play()
-})
+onMounted(() => {})
 
 // @ts-expect-error something wrong
 const s = new C3D.Stage()
+// @ts-expect-error something wrong
 const a = new C3D.Stage()
 
 a.size(window.innerWidth, window.innerHeight)
   .material({
-    // image: Img_Circle,
-    // repeat: 'no-repeat',
-    // bothsides: false,
-    color: '#0ffccc',
+    image: Img_BlackSky,
+    repeat: 'no-repeat',
+    bothsides: false,
   })
   .update()
 document.body.appendChild(a.el)
 
+// @ts-expect-error something wrong
 const sp4a = new C3D.Sprite()
 sp4a.position(10, -50, -1000).update()
 a.addChild(sp4a)
@@ -52,7 +47,6 @@ const p4a = new C3D.Plane()
 p4a
   .size(280, 334)
   .position(0, 0, 0)
-  // .rotation(10, 20, 10)
   .material({
     image: Img_Circle,
     repeat: 'no-repeat',
@@ -62,15 +56,16 @@ p4a
   .update()
 sp4a.addChild(p4a)
 
+// @ts-expect-error something wrong
 const sp4a1 = new C3D.Sprite()
 sp4a1.position(10, -70, -1000).update()
 a.addChild(sp4a1)
 
+// @ts-expect-error something wrong
 const p4a1 = new C3D.Plane()
 p4a1
   .size(40, 40)
   .position(0, 0, 0)
-  // .rotation(10, 20, 10)
   .material({
     image: Img_Play,
     repeat: 'no-repeat',
@@ -91,15 +86,16 @@ sp4a1.on('click', () => {
 })
 
 // ---------------------------
+// @ts-expect-error something wrong
 const sp4a2 = new C3D.Sprite()
 sp4a2.position(0, 370, -700).update()
 a.addChild(sp4a2)
 
+// @ts-expect-error something wrong
 const p4a2 = new C3D.Plane()
 p4a2
   .size(window.innerWidth, 270)
   .position(60, 0, 0)
-  // .rotation(10, 20, 10)
   .material({
     image: Img_9112,
     repeat: 'no-repeat',
@@ -111,7 +107,6 @@ sp4a2.addChild(p4a2)
 
 function buildSecond() {
   // @ts-expect-error something wrong
-
   s.size(window.innerWidth, window.innerHeight)
     .material({
       color: '#000000',
@@ -135,6 +130,7 @@ function buildSecond() {
     { url: Img_Cloud },
     { url: Img_Logo },
     { url: Img_DreamTxt },
+    { url: Img_Catcher },
   ]
 
   setTimeout(() => {
@@ -148,7 +144,6 @@ function buildSecond() {
     const pa = new C3D.Plane()
     pa.size(window.innerWidth, window.innerHeight)
       .position(0, 0, 0)
-      // .rotation(10, 20, 10)
       .material({
         image: Img_Road,
         repeat: 'round',
@@ -159,7 +154,6 @@ function buildSecond() {
     spa.addChild(pa)
 
     function moveaaB() {
-      // sp2.rotate(0, 0, 5).updateT()
       spa.move(0, 10, 5).updateT()
       spa.scale(1, 1, 1).updateT()
       requestAnimationFrame(moveaaB)
@@ -173,7 +167,6 @@ function buildSecond() {
   const p = new C3D.Plane()
   p.size(150, 70)
     .position(20, 0, 0)
-    //   .rotation(10, 10, 10)
     .material({
       image: bgDaa[0].url,
     })
@@ -182,7 +175,6 @@ function buildSecond() {
   sp.addChild(p)
 
   function moveA() {
-    //   sp.rotate(0, 0, 5).updateT()
     sp.move(0, -10, 5).updateT()
     sp.scale(1.3, 1.3, 1.3).updateT()
     requestAnimationFrame(moveA)
@@ -197,7 +189,6 @@ function buildSecond() {
     sp2.position(0, 0, -500).update()
     s.addChild(sp2)
 
-    // 911 Move
     // @ts-expect-error something wrong
     const p2 = new C3D.Plane()
     p2.size(500, 282)
@@ -211,7 +202,6 @@ function buildSecond() {
     sp2.addChild(p2)
 
     function moveB() {
-      // sp2.rotate(0, 0, 5).updateT()
       sp2.move(0, 10, 5).updateT()
       sp2.scale(0.4, 0.4, 0.4).updateT()
       requestAnimationFrame(moveB)
@@ -231,7 +221,6 @@ function buildSecond() {
     const p3 = new C3D.Plane()
     p3.size(150, 70)
       .position(0, -90, 0)
-      // .rotation(10, 20, 10)
       .material({
         image: bgDaa[6].url,
         repeat: 'no-repeat',
@@ -242,7 +231,6 @@ function buildSecond() {
     sp3.addChild(p3)
 
     function moveC() {
-      // sp3.rotate(0, 0, 5).updateT()
       sp3.move(0, 0, 25).updateT()
       sp3.scale(1.5, 1.5, 1.5).updateT()
       requestAnimationFrame(moveC)
@@ -261,7 +249,6 @@ function buildSecond() {
     const p4 = new C3D.Plane()
     p4.size(250, 334)
       .position(0, 0, 0)
-      // .rotation(10, 20, 10)
       .material({
         image: bgDaa[7].url,
         repeat: 'no-repeat',
@@ -277,10 +264,7 @@ function buildSecond() {
     })
 
     function moveD() {
-      // sp4.rotate(0, 5, 0).updateT()
-      // sp4.move(0, 0, 25).updateT()
       sp4.scale(0.3, 0.3, 0.3).updateT()
-
       requestAnimationFrame(moveD)
     }
 
@@ -289,7 +273,7 @@ function buildSecond() {
       bgDom.style.display = ''
 
     requestAnimationFrame(moveD)
-  }, 10000)
+  }, 12000)
 
   setTimeout(() => {
     // @ts-expect-error something wrong
@@ -361,6 +345,38 @@ function buildSecond() {
     requestAnimationFrame(go)
   }, 6000)
 
+  // ------------------
+  setTimeout(() => {
+    // @ts-expect-error something wrong
+    const sp6 = new C3D.Sprite()
+    sp6.position(0, 200, -1000).update()
+    s.addChild(sp6)
+
+    // @ts-expect-error something wrong
+    const p6 = new C3D.Plane()
+    p6.size(window.innerWidth, window.innerHeight)
+      .position(0, 0, 0)
+      .material({
+        image: bgDaa[9].url,
+        repeat: 'no-repeat',
+        bothsides: false,
+      })
+      .buttonMode(true)
+      .update()
+    sp6.addChild(p6)
+
+    function moveG() {
+      sp6.rotate(0, 4, 0).updateT()
+      sp6.move(0, 0, 15).updateT()
+      sp6.scale(1.3, 1.3, 1.3).updateT()
+
+      requestAnimationFrame(moveG)
+    }
+
+    requestAnimationFrame(moveG)
+  }, 9000)
+  // -----------------
+
   // ========================
   setTimeout(() => {
     s.size(window.innerWidth, window.innerHeight)
@@ -370,7 +386,7 @@ function buildSecond() {
         bothsides: false,
       })
       .update()
-  }, 10000)
+  }, 11000)
 }
 function startDream() {
   document.body.removeChild(a.el)
@@ -384,15 +400,11 @@ function startDream() {
     <source type="audio/mp3" :src="audioSrc">
   </audio>
   <div v-show="false" id="bg" class="bg">
-    <div id="zmzl">
-      追梦之旅
+    <div animate-fade-in>
+      <img src="../assets/dream-txt.png">
     </div>
 
-    <div mt-33 fccc flex gap-2 text-16px @click="startDream">
-      <!-- <span>向下滚动</span>
-      <div animate-pulse>
-        <div i-ic-round-keyboard-double-arrow-down animate-bounce />
-      </div> -->
+    <div mt-22 fccc flex gap-2 text-16px @click="startDream">
       <div animate-bounce text-48px font-ab c-red>
         <!-- <img src="../assets/run.png"> -->
         Run!!!
@@ -410,7 +422,7 @@ function startDream() {
   color: #fff;
   position: absolute;
   z-index: 9;
-  top: 40%;
+  top: 28%;
   text-align: center;
   width: 100%;
   font-size: 48px;
