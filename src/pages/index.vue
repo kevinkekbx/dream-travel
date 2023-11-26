@@ -27,8 +27,10 @@ function startDream() {
   if (!userModel.value.id)
     return showForm()
 
+  // 审核中
   if (userModel.value.status === 0)
     router.push('/result')
+  // 已通过
   else if (userModel.value.status === 1)
     router.push('/travel')
 }

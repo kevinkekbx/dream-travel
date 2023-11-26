@@ -41,7 +41,7 @@ async function onSubmit(values: any) {
 
   const str = qs.stringify(modelForm)
 
-  const url = `http://150.158.43.244:8080/dreamer/submit?${str}`
+  const url = `http://13.229.212.95:8080/dreamer/submit?${str}`
 
   try {
     const { data, error } = await useFetch(url).post().json()

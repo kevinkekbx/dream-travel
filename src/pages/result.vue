@@ -6,15 +6,41 @@ const isDisabled = ref(true)
 const router = useRouter()
 
 function handleStart() {
-  isDisabled.value = true
+  // isDisabled.value = true
 
+  // setTimeout(() => {
+  showSuccessToast('即将进入梦想之旅')
   setTimeout(() => {
-    showSuccessToast('即将进入梦想之旅')
-    setTimeout(() => {
-      router.push('/travel')
-    }, 1500)
+    router.push('/travel')
   }, 1500)
+  // }, 1500)
 }
+
+async function refreshStatus() {
+  const { data } = await useFetch(`http://13.229.212.95:8080/dreamer/detail?id=${userModel.value.id}`).post().json()
+  const { status } = data.value.data
+
+  userModel.value.status = status
+
+  isDisabled.value = status !== 1
+}
+
+onMounted(() => {
+  if (!userModel.value.id)
+    router.replace('/')
+  refreshStatus()
+})
+
+const title = computed(() => {
+  switch (userModel.value.status) {
+    case 0:
+      return '已提交，报名中'
+    case 1:
+      return '报名成功'
+    case 2:
+      return '审核不通过'
+  }
+})
 </script>
 
 <template>
@@ -24,7 +50,7 @@ function handleStart() {
     </div>
     <div mt-16 fccc font-porsche c-primary>
       <h3 text-2xl font-700>
-        {{ isDisabled ? '已提交，报名中' : '报名成功' }}
+        {{ title }}
       </h3>
       <p mt-2 text-lg>
         {{ userModel.name }}｜{{ userModel.type }}

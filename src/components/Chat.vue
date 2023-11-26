@@ -52,7 +52,7 @@ async function fetchReply(question: string) {
 
   let content = ''
 
-  const url = `http://150.158.43.244:8080/mock/ai/qa?question=${encodeURIComponent(question)}`
+  const url = `http://13.229.212.95:8080/mock/ai/qa?question=${encodeURIComponent(question)}`
   const { data } = await useFetch(url).post().json()
   content = data.value.data.data
 
