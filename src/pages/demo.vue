@@ -88,7 +88,7 @@ sp4a1.on('click', () => {
 // ---------------------------
 // @ts-expect-error something wrong
 const sp4a2 = new C3D.Sprite()
-sp4a2.position(0, 370, -700).update()
+sp4a2.position(50, 350, -700).update()
 a.addChild(sp4a2)
 
 // @ts-expect-error something wrong
@@ -234,7 +234,7 @@ function buildSecond() {
     sp3.addChild(p3)
 
     function moveC() {
-      sp3.move(0, 0, 25).updateT()
+      sp3.move(0, 0, 20).updateT()
       sp3.scale(1.5, 1.5, 1.5).updateT()
       requestAnimationFrame(moveC)
     }
@@ -300,7 +300,7 @@ function buildSecond() {
 
     function moveE() {
       // sp4.rotate(0, 5, 0).updateT()
-      sp5.move(0, 0, 25).updateT()
+      sp5.move(0, 0, 20).updateT()
       sp5.scale(1.8, 1.8, 1.8).updateT()
 
       requestAnimationFrame(moveE)
