@@ -399,7 +399,7 @@ function startDream() {
 </script>
 
 <template>
-  <audio ref="vRef" controls autoplay>
+  <audio ref="vRef" autoplay>
     <source type="audio/mp3" :src="audioSrc">
   </audio>
   <div v-show="false" id="bg" class="bg">
