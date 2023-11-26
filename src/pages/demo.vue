@@ -106,7 +106,6 @@ p4a2
 sp4a2.addChild(p4a2)
 
 function buildSecond() {
-  // @ts-expect-error something wrong
   s.size(window.innerWidth, window.innerHeight)
     .material({
       color: '#000000',
