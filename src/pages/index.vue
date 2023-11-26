@@ -32,6 +32,13 @@ function startDream() {
   else if (userModel.value.status === 1)
     router.push('/travel')
 }
+
+function handleOpen() {
+  document.body.classList.add('formPopup')
+}
+function handleClose() {
+  document.body.classList.remove('formPopup')
+}
 </script>
 
 <template>
@@ -50,7 +57,7 @@ function startDream() {
       <!-- mask -->
       <div absolute bottom-0 left-0 right-0 top-0 h-full w-full bg-black:70>
         <div px-5 pt-43>
-          <h3 text-2xl font-porsche>
+          <h3 text-2xl font-porsche text-white dark:op-70>
             想在 YOUNG 时代追梦保时捷吗？
             <br>
             跟随我们的脚步
@@ -103,10 +110,13 @@ function startDream() {
 
     <van-popup
       v-model:show="formVisible"
+      :close-on-popstate="true"
       round
       closeable
       position="bottom"
       :style="{ height: '90%' }"
+      @open="handleOpen"
+      @close="handleClose"
     >
       <TheForm />
     </van-popup>

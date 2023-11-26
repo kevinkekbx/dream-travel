@@ -4,6 +4,7 @@
 
 <template>
   <main text="primary dark:gray-200">
+    <HeaderMenu />
     <RouterView />
     <Bot />
   </main>
