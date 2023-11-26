@@ -105,6 +105,12 @@ p4a2
   .update()
 sp4a2.addChild(p4a2)
 
+// ---------------------------
+// @ts-expect-error something wrong
+const sp4a2a = new C3D.Sprite()
+sp4a2a.position(0, -870, -1300).update()
+a.addChild(sp4a2a)
+
 function buildSecond() {
   s.size(window.innerWidth, window.innerHeight)
     .material({
@@ -138,7 +144,6 @@ function buildSecond() {
     spa.position(0, 0, -500).update()
     s.addChild(spa)
 
-    // 911 Move
     // @ts-expect-error something wrong
     const pa = new C3D.Plane()
     pa.size(window.innerWidth, window.innerHeight)
@@ -215,10 +220,9 @@ function buildSecond() {
     sp3.position(10, -50, -1000).update()
     s.addChild(sp3)
 
-    // 911 Move
     // @ts-expect-error something wrong
     const p3 = new C3D.Plane()
-    p3.size(150, 70)
+    p3.size(173, 86)
       .position(0, -90, 0)
       .material({
         image: bgDaa[6].url,
