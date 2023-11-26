@@ -158,7 +158,7 @@ function buildSecond() {
     spa.addChild(pa)
 
     function moveaaB() {
-      spa.move(0, 10, 5).updateT()
+      spa.move(0, 3, 0).updateT()
       spa.scale(1, 1, 1).updateT()
       requestAnimationFrame(moveaaB)
     }
@@ -179,7 +179,7 @@ function buildSecond() {
   sp.addChild(p)
 
   function moveA() {
-    sp.move(0, -10, 5).updateT()
+    sp.move(0, -10, 0).updateT()
     sp.scale(1.3, 1.3, 1.3).updateT()
     requestAnimationFrame(moveA)
   }
@@ -206,7 +206,7 @@ function buildSecond() {
     sp2.addChild(p2)
 
     function moveB() {
-      sp2.move(0, 10, 5).updateT()
+      sp2.move(0, 3, 0).updateT()
       sp2.scale(0.4, 0.4, 0.4).updateT()
       requestAnimationFrame(moveB)
     }
