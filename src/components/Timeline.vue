@@ -7,6 +7,10 @@ const step = defineModel('step', {
   type: Number,
   default: 0,
 })
+
+function handleClick(idx: number) {
+  global_step.value = idx + 1
+}
 </script>
 
 <template>
@@ -22,6 +26,7 @@ const step = defineModel('step', {
           idx + 1 > step ? 'after-b-t-primary/25! text-primary/70 after-b-op-70! b-op-70!' : '',
           idx + 1 === step ? 'bg-primary text-white' : '',
         ]"
+        @click="handleClick(idx)"
       >
         <span v-if="idx + 1 >= step">{{ idx + 1 }}</span>
         <div v-else i-ic-baseline-check />

@@ -1,6 +1,6 @@
 <script lang='ts' setup>
 withDefaults(defineProps<{
-  blur: boolean
+  blur?: boolean
 }>(), {
   blur: true,
 })

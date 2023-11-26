@@ -3,6 +3,15 @@
 const currentRate = ref(30)
 const total = ref(300000)
 
+onMounted(() => {
+  const timer = setInterval(() => {
+    if (currentRate.value < 100)
+      currentRate.value += 1
+    else
+      clearInterval(timer)
+  }, 1000)
+})
+
 function handleAddProgress() {
   if (currentRate.value + 10 >= 100) {
     currentRate.value = 100
@@ -33,7 +42,6 @@ const gradientColor = {
         size="200px"
         :color="gradientColor"
         layer-color="#cacaca"
-        stroke-linecap="square"
       >
         <div h-full w-full fccc>
           <span text-32px fw-600>{{ formatPriceNum(total * (currentRate / 100), 0, '¥ ') }}</span>
